@@ -64,6 +64,9 @@ func (d *Doer) Post(url string, body io.Reader, bodyType string, response interf
 		return nil, err
 	}
 
+	out, _ := json.Marshal(req)
+	log.Warnf("request: %s", out)
+
 	return d.do(req, response)
 }
 

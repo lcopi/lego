@@ -122,6 +122,7 @@ func (a *Core) signedPost(uri string, content []byte, response interface{}) (*ht
 	}
 
 	signedBody := bytes.NewBuffer([]byte(signedContent.FullSerialize()))
+	log.Warnf("uri: %s body: %s", uri, signedBody.String())
 
 	resp, err := a.doer.Post(uri, signedBody, "application/jose+json", response)
 
